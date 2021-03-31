@@ -1,0 +1,10 @@
+button {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-sm {
+  font-size: 0.8em;
+  padding: 5px;
+  line-height: 8px;
+}

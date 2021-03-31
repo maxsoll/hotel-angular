@@ -1,0 +1,50 @@
+<div class="container">
+    <br>
+    <h5>Выберите номер</h5>
+    <button class = "btn btn-success" (click)="roomSelect('econom')">Econom</button>
+    <button class = "btn btn-danger" (click)="roomSelect('standart')">Standart</button>
+    <button class = "btn btn-info" (click)="roomSelect('lux')">Lux</button>
+    <br>
+    <h3><mark>Номер:</mark> {{name}}
+    <small>{{roomType}}</small></h3>
+    <div class="alert alert-success">
+        Характеристики номера:
+        <ul>
+            <li>Кол-во кроватей: <strong>{{roomInfo.countofBeds}}</strong></li>
+            <li>Кол-во костей: <strong>{{roomInfo.sleeps}}</strong></li>
+            <li>Цена за сутки: <strong>{{roomInfo.price}}</strong></li>
+        </ul>
+    </div>
+
+    <h5>Особенности номера</h5>
+    <div class="alert alert-warning">
+       <ul>
+           <li *ngFor="let opt of options;">{{opt}} <button class="btn btn-warning btn-sm" (click)="deleteOpt(opt)">X</button></li>
+       </ul>
+    </div>
+    <h5>Возможности</h5>
+    <form (submit)="addOpt(option.value)">
+        <div class="form-froup">
+            <label for="option">Добавление новой возможности</label>
+            <input type="text" id="option" placeholder="Введите что-то" class="form-control" #option>
+            <br>
+            <button type="submit" class="btn-outline-success">Добавить</button>
+        </div>
+    </form>
+
+
+    <h5>Редактировать название номера</h5>
+    <button class = "btn btn-danger" (click)="showEdit()">Редактировать</button>
+    <div><br></div>
+    <form *ngIf=isEdit>
+        <div class="form-froup">
+            <input type="text"  placeholder="Название номера" class="form-control" [(ngModel)]="name" name="name"><br>
+            <input type="text"  placeholder="Тип номера" class="form-control" [(ngModel)]="roomType" name="roomType"><br>
+            <input type="number"  placeholder="Кол-во кроватей" class="form-control"  [(ngModel)]="roomInfo.countofBeds" name="countofBeds"><br>
+            <input type="number"  placeholder="Кол-во гостей" class="form-control"  [(ngModel)]="roomInfo.sleeps" name="sleeps"><br>
+            <input type="text"  placeholder="Цена за сутки" class="form-control" [(ngModel)]="roomInfo.price" name="price">
+        </div>
+    </form>
+   
+</div>
+
